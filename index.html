@@ -1,0 +1,591 @@
+<!--
+ * @Author: Qiguang Chen
+ * @LastEditors: Qiguang Chen
+ * @Date: 2024-03-17 11:48:29
+ * @LastEditTime: 2024-05-26 18:03:01
+ * @Description: 
+ * 
+-->
+<!DOCTYPE html>
+<!-- saved from url=(0027)https://llava-vl.github.io/ -->
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete" lang="en-US">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta name="description" content="Vision-Language Feedback">
+  <meta name="keywords" content="multimodal chatbot">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" href="img/unicorn.svg" type="image/icon type">
+  <title>M<sup>3</sup>CoT</title>
+
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.1.0/build/pure-min.css"
+        integrity="sha384-yHIFVG6ClnONEA5yB5DJXfW2/KC173DIQrYoZMEtBvGzmf0PKiGyNEqe9N6BNDBH" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/explore.css">
+
+  <script src="https://cdn.jsdelivr.net/npm/underscore@latest/underscore-umd-min.js"></script>
+  <script src="javascript/problems.js"></script>
+  <script src="javascript/explore.js" defer></script>
+  
+  <link rel="stylesheet" href="./LLaVA_files/css">
+  <link rel="stylesheet" href="./LLaVA_files/bulma.min.css">
+  <link rel="stylesheet" href="./LLaVA_files/bootstrap.min.css">
+  <link rel="stylesheet" href="./LLaVA_files/index.css">
+</head>
+
+
+<body data-new-gr-c-s-check-loaded="14.1126.0" data-gr-ext-installed="">
+  <div id="nav">
+    <div id="icon">
+        <img src="img/unicorn.svg" alt="SVG Image">
+        <a class="nav-button" href="https://m3cot.github.io/"
+            style="margin-left: 2px; font-size: 24px">M<sup>3</sup>CoT
+        </a>
+    </div>
+    <div>
+        <a class="nav-button" href="#home">Home</a>
+        <a class="nav-button" href="https://huggingface.co/datasets/LightChen2333/M3CoT">Download</a>
+        <a class="nav-button" href="#evaluation">Evaluation</a>
+        <a class="nav-button" href="#annotation">Annotation</a>
+        <a class="nav-button" href="#paper">Paper</a>
+        <a class="nav-button" href="https://github.com/LightChen233/M3CoT">Code</a>
+        <a class="nav-button" href="#citation">Citation</a>
+        <a class="nav-button" href="#contact">Contact</a>
+        <a class="nav-button" href="leaderboard.html">Leaderboard</a>
+        <a class="nav-button" href="explore.html">Explore</a>
+        <a class="nav-button" href="visualize.html">Visualize</a>
+    </div>
+</div>
+
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <!-- <h1 class="title is-1 publication-title">VLFeedback and Silkie</h1> -->
+            <!-- <h1 class="title is-1 publication-title">
+              <img src="./LLaVA_files/silkie.png" alt="VLFeedback and Silkie" style="height: 50px; width: 50px;"> VLFeedback and Silkie
+          </h1> -->
+            <h1 class="title is-1 publication-title" id="home">
+              <span style="display: inline-block; vertical-align: middle;margin-top: 40px;">🦄M<sup>3</sup>CoT</span>
+              <!-- <span style="display: inline-block; vertical-align: middle; margin-top: -15px; margin-left: -7px;">
+                <img src="./LLaVA_files/silkie.png" alt="VLFeedback and Silkie" style="height: 50px; width: 50px;">
+            </span> -->
+            </h1>
+            <h3 class="title is-3 publication-title">M<sup>3</sup>CoT: A Novel Benchmark for <br> Multi-Domain Multi-step Multi-modal
+              Chain-of-Thought            </h3>
+            <div class="is-size-5">
+              <span class="author-block">
+                <a href="https://lightchen233.github.io" style="color:#008AD7;font-weight:normal;">Qiguang Chen</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://scholar.google.com/citations?user=8lVpK1QAAAAJ&hl=en" style="color:#008AD7;font-weight:normal;">Libo Qin</a>,
+              </span>
+              <span class="author-block">
+                <a style="color:#008AD7;font-weight:normal;">Jin Zhang</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://donmaclean7.github.io/" style="color:#008AD7;font-weight:normal;">Zhi Chen</a>,
+              </span>
+              <span class="author-block">
+                <a href="https://looperxx.github.io/" style="color:#008AD7;font-weight:normal;">Xiao Xu</a>,
+              </span>
+              <span class="author-block">
+                <a href="http://ir.hit.edu.cn/~car/" style="color:#008AD7;font-weight:normal;">Wanxiang Che</a>
+              </span>
+              </span>
+            </div>
+
+            <br>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><b style="color:#008AD7; font-weight:normal">▶ </b>Harbin Institute of
+                Technology
+              </span>
+              <br>
+              <span class="author-block"><b style="color:#94070A; font-weight:normal">▶ </b>Central South
+                University</span>
+              <br>
+              <span class="author-block"><b style="color:#07944b; font-weight:normal">▶ </b>Shanghai AI Lab
+                University</span>
+              <br>
+              <!-- <span class="author-block">&nbsp;&nbsp;<sup>*</sup>Equal Contribution</span> -->
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="https://arxiv.org/abs/2403.00231" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <svg id="logomark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17.732 24.269">
+                        <g id="tiny">
+                          <path
+                            d="M573.549,280.916l2.266,2.738,6.674-7.84c.353-.47.52-.717.353-1.117a1.218,1.218,0,0,0-1.061-.748h0a.953.953,0,0,0-.712.262Z"
+                            transform="translate(-566.984 -271.548)" fill="#bdb9b4" />
+                          <path
+                            d="M579.525,282.225l-10.606-10.174a1.413,1.413,0,0,0-.834-.5,1.09,1.09,0,0,0-1.027.66c-.167.4-.047.681.319,1.206l8.44,10.242h0l-6.282,7.716a1.336,1.336,0,0,0-.323,1.3,1.114,1.114,0,0,0,1.04.69A.992.992,0,0,0,571,293l8.519-7.92A1.924,1.924,0,0,0,579.525,282.225Z"
+                            transform="translate(-566.984 -271.548)" fill="#b31b1b" />
+                          <path
+                            d="M584.32,293.912l-8.525-10.275,0,0L573.53,280.9l-1.389,1.254a2.063,2.063,0,0,0,0,2.965l10.812,10.419a.925.925,0,0,0,.742.282,1.039,1.039,0,0,0,.953-.667A1.261,1.261,0,0,0,584.32,293.912Z"
+                            transform="translate(-566.984 -271.548)" fill="#bdb9b4" />
+                        </g>
+                      </svg>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- <span class="link-block">
+                  <a href="https://github.com/vlf-silkie/VLFeedback" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span> -->
+                <span class="link-block">
+                  <a href="https://huggingface.co/datasets/LightChen2333/M3CoT" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    
+                    <span>🤗Dataset(HuggingFace)</span>
+                  </a>
+                </span>
+
+                <span class="link-block">
+                  <a href="https://drive.google.com/file/d/1v2ysvsKHJ8-ugnxwseaN28s6BZmHlpKN" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <svg class="svg-inline--fa fa-database fa-w-14" aria-hidden="true" focusable="false"
+                        data-prefix="fas" data-icon="database" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512" data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M448 73.143v45.714C448 159.143 347.667 192 224 192S0 159.143 0 118.857V73.143C0 32.857 100.333 0 224 0s224 32.857 224 73.143zM448 176v102.857C448 319.143 347.667 352 224 352S0 319.143 0 278.857V176c48.125 33.143 136.208 48.572 224 48.572S399.874 209.143 448 176zm0 160v102.857C448 479.143 347.667 512 224 512S0 479.143 0 438.857V336c48.125 33.143 136.208 48.572 224 48.572S399.874 369.143 448 336z">
+                        </path>
+                      </svg><!-- <i class="fas fa-database"></i> Font Awesome fontawesome.com -->
+                    </span>
+                    <span>Dataset(GoogleDrive)</span>
+                  </a>
+                </span>
+
+
+                <span class="link-block">
+                  <a href="https://github.com/LightChen233/M3CoT" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <svg class="svg-inline--fa fa-share-square fa-w-18" aria-hidden="true" focusable="false"
+                        data-prefix="fas" data-icon="share-square" role="img" xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 576 512" data-fa-i2svg="">
+                        <path fill="currentColor"
+                          d="M568.482 177.448L424.479 313.433C409.3 327.768 384 317.14 384 295.985v-71.963c-144.575.97-205.566 35.113-164.775 171.353 4.483 14.973-12.846 26.567-25.006 17.33C155.252 383.105 120 326.488 120 269.339c0-143.937 117.599-172.5 264-173.312V24.012c0-21.174 25.317-31.768 40.479-17.448l144.003 135.988c10.02 9.463 10.028 25.425 0 34.896zM384 379.128V448H64V128h50.916a11.99 11.99 0 0 0 8.648-3.693c14.953-15.568 32.237-27.89 51.014-37.676C185.708 80.83 181.584 64 169.033 64H48C21.49 64 0 85.49 0 112v352c0 26.51 21.49 48 48 48h352c26.51 0 48-21.49 48-48v-88.806c0-8.288-8.197-14.066-16.011-11.302a71.83 71.83 0 0 1-34.189 3.377c-7.27-1.046-13.8 4.514-13.8 11.859z">
+                        </path>
+                      </svg>
+                    </span>
+                    <span>Github Code</span>
+                  </a>
+                </span>
+
+
+                <!-- <span class="link-block">
+                <a href="#"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                    <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                  </a>
+              </span> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section" style="background-color:#efeff081">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-six-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Multi-modal Chain-of-Thought (MCoT) requires models to leverage knowledge from both textual and visual
+              modalities for step-by-step reasoning, which gains increasing attention.
+              Nevertheless, the current MCoT benchmark still faces some challenges: (1) <i>absence of visual modal
+                reasoning</i>, (2) <i>single-step visual modal reasoning</i>, and (3) <i>Domain missing</i>, thereby
+              hindering the development of MCoT.
+              Motivated by this, we introduce a novel benchmark (<code>M<sup>3</sup>CoT</code>) to address the above
+              challenges,
+              advancing the multi-domain, multi-step, and multi-modal CoT.
+              Additionally, we conduct a thorough evaluation involving abundant MCoT approaches on Vision Large Language
+              Models (VLLMs).
+              In addition, we highlight that the current VLLMs still struggle to correctly reason in
+              <code>M<sup>3</sup>CoT</code> and there is a large gap between VLLMs and human performance in
+              <code>M<sup>3</sup>CoT</code>, despite their superior results on previous MCoT benchmarks.
+              To our knowledge, we take the first meaningful step toward the multi-domain, multi-step, and multi-modal
+              scenario in MCoT.
+              We hope that <code>M<sup>3</sup>CoT</code> will serve as a valuable
+              resource, providing a pioneering foundation in multi-domain, multi-step, multi-modal chain-of-thought
+              research.
+            <p></p>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3"><img id="painting_icon" width="3%" src=""> Motivation
+        </h2>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <div>
+              <div style="float: right;width: 40%;margin-right: 5%;">
+                <img id="teaser" width="100%" src="./LLaVA_files/figs/intro.png">
+              </div>
+              <div style="float: left;width: 50%;">
+                <p style="margin-top: 20px;">
+                  We find that the existing benchmarks exhibit three major drawbacks:
+                </p>
+                <p>
+                  <strong><em>Absence of visual modal reasoning</em></strong> As shown in Figure a, the model can
+                  successfully produce rationale and answer solely based on the textual modality context of "<em>supports
+                    the plant</em>", which cannot truly reflect the ability of multi-modal CoT model.
+                </p>
+                <p>
+                  <strong><em>Single-step visual modal reasoning</em></strong> As illustrated in Figure b, the model only
+                  requires a single-step "feather" object to predict the correct rationale and answer, which cannot be
+                  satisfied in the complex multi-step CoT scenario.
+                </p>
+                <p>
+                  <strong><em>Domain Missing</em></strong> Commonsense and mathematics are important domains for evaluating
+                  multi-modal CoT, but the current benchmarks lack these topics, hindering the comprehensive evaluation
+                  progress of multi-modal CoT.
+                </p>
+            </div>
+          </div>
+          <br>
+            <centering style="margin-top: 20px;">
+              <div style="text-align: center;">
+                <img id="teaser" width="100%" style="margin-top: 50px;" src="./LLaVA_files/figs/Figure2.png">
+              </div>
+            </centering>
+            <br>
+          <p>
+              For more details, you can explore the datatset and check the visualizations here:
+              <a class="ext-link" href="explore.html">Explore</a> and
+              <a class="ext-link" href="visualize.html">Visualizations</a>.
+          </p>
+          <p>
+              Our dataset is distributed under the
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="blank" class="ext-link">
+                  CC BY-NC-SA (Attribution-NonCommercial-ShareAlike)
+              </a>
+              license. You can download our dataset from
+              
+              <a href="https://drive.google.com/file/d/1etnl1__q2_dKC2EuEDPJNXNCMHlt7x_L" class="ext-link">
+                  M<sup>3</sup>CoT
+              </a>
+              (Google Drive), or check out our
+              <a href="https://github.com/LightChen233/M3CoT" class="ext-link" target="blank">github
+                  repository</a>.
+          </p>
+          <p>
+              💡 The M<sup>3</sup>CoT dataset is now available at <a href="https://huggingface.co/datasets/LightChen2333/M3CoT" class="ext-link" target="blank">HuggingFace Datasets</a>!
+          </p>
+            <br><br>
+            <div class="columns is-centered has-text-centered">
+              <div class="column is-six-fifths">
+                <h2 class="title is-3" id="annotation"><img id="painting_icon" width="3%" src=""> Annotation
+                </h2>
+              </div>
+            </div>
+            <p>
+              Specifically, to address the first issue, we directly remove samples that could infer the final answer
+              without the need for images.
+            <p>
+
+            </p>To tackle the second issue, we manually annotate and select multi-step
+            multi-modal samples. Specifically, we provide expert annotators with textual context and rationales
+            without images. Experts were required to determine when multi-step reasoning could not be resolved solely
+            based on textual context. Subsequently, we present the images to experts to ascertain whether multi-step
+            reasoning occurred across textual and visual modalities.
+            <p>
+              
+            </p>To solve the third issue, we explore LLM-guided
+            augmentation to synthesize the multi-step MCoT data for commonsense and mathematics domains.
+            </p>
+            <centering>
+              <div style="text-align: center;">
+                <img id="teaser" width="100%" src="./LLaVA_files/figs/main.png">
+              </div>
+            </centering>
+
+            <br><br>
+
+            <p>
+              <code>M<sup>3</sup>CoT</code> is randomly divided into three splits: train, validation, and test splits,
+              containing 7,973, 1,127, and 2,359 examples respectively.
+            </p>
+            <p>
+              Compared to ScienceQA, <code>M<sup>3</sup>CoT</code> demands more intricate reasoning, with an average
+              length of 293.93, much higher than ScienceQA's 47.66.
+            </p>
+            <centering>
+              <div style="text-align: center;">
+                <img id="teaser" width="100%" src="./LLaVA_files/figs/Figure6.png">
+              </div>
+            </centering>
+          </div>
+        </div>
+      </div>
+  </section>
+
+
+  <!-- <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3"><img id="painting_icon" width="3%" src=""> Example
+        </h2>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              An Example from domain science, topic social-science:
+
+            </p>
+            <centering>
+              <div style="text-align: center;">
+                <img id="teaser" width="80%" src="./LLaVA_files/figs/Example1.png">
+              </div>
+            </centering>
+            <br><br>
+
+            <p>
+              An Example from domain mathematics, topic geometry:
+
+            </p>
+            <centering>
+              <div style="text-align: center;">
+                <img id="teaser" width="80%" src="./LLaVA_files/figs/Example3.png">
+              </div>
+            </centering>
+            <br><br>
+
+            <p>
+              An Example from domain commonsense, topic social-commonsense:
+            </p>
+            <centering>
+              <div style="text-align: center;">
+                <img id="teaser" width="80%" src="./LLaVA_files/figs/Example2.png">
+              </div>
+            </centering>
+
+            <br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+
+  <section class="section">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h2 class="title is-3" id="evaluation"><img id="painting_icon" width="5%" src=""> Evaluation</h2>
+        <!-- <h2 class="title is-3"><img id="painting_icon" width="3%" src="./LLaVA_files/silkie.png"> Silkie: A Better Aligned LVLM </h2> -->
+      </div>
+    </div>
+    <div class="container is-max-desktop">
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              We evaluate various VLLMs in <code>M<sup>3</sup>CoT</code>, including <em>Kosmos-2</em>,
+              <em>InstructBLIP</em>, <em>LLaVA-V1.5</em>, <em>CogVLM</em>, <em>Gemini</em>, <em>GPT4V</em>. In addition,
+              we explore some prompting strategies. Specifically, we utilize <em>Direct</em> approach to submitting
+              samples in the VLLMs required format; <em>CoT</em> with “Let’s think step-by-step!”; <em>Desp–CoT</em>
+              with an initial image description prompting; <em>CCoT</em> with better description in graph format.
+            </p>
+            </p>
+            <centering>
+              <div style="text-align: center;">
+                <img id="teaser" width="100%" src="./img/Table1.png">
+              </div>
+
+            </centering>
+            <br><br>
+
+            <p>
+              As shown in Figure(a), VLLM has achieved amazing performance in single-step reasoning.
+              However, compared with single-step MCoT data in ScienceQA, multi-step MCoT data in
+              <code>M<sup>3</sup>CoT</code> maintains at least a 29.06% performance decrease (Figure(a)). In order to
+              further understand the difference in model reasoning with different number of steps, we calculated the
+              accuracy of different steps. As shown in Figure 7 (b), as the number of reasoning steps increases, the
+              performance of the model will decrease significantly.
+              In Figure(c), minimal rationale semantic distribution overlap between datasets further proves that the
+              multi-step MCoT is an Out-of-Distribution (OOD) problem compared with single-step MCoT. For all, we
+              attribute the low performance to the multi-step complexities for <code>M<sup>3</sup>CoT</code>.
+            </p>
+            <centering>
+              <div style="text-align: center;">
+                <img id="teaser" width="100%" src="./LLaVA_files/figs/Figure7.png">
+              </div>
+            </centering>
+            <br><br>
+
+            <p>
+              We observe that rationale quality incrementally improves <code>M<sup>3</sup>CoT</code> performance, while
+              markedly impacts the accuracy in CoT tasks.
+              it markedly impacts the accuracy in CoT tasks.
+            </p>
+            <centering>
+              <div style="text-align: center;">
+                <img id="teaser" width="60%" src="./LLaVA_files/figs/Figure8.png">
+              </div>
+            </centering>
+            <br><br>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="section">
+
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-six-fifths">
+        <h3 class="title is-3"> Finetuning on various VLLMs</h3>
+      </div>
+    </div>
+
+    <div class="container is-max-desktop">
+
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <div class="content has-text-justified">
+            <p>
+              <b><i>Finetuning on <code>M<sup>3</sup>CoT</code> can result better performance</i></b>
+            </p>
+            <centering>
+              <div style="text-align: center;">
+                <img id="teaser" width="100%" src="./img/Table2.png">
+              </div>
+            </centering>
+            <p></p>Table reveals that our benchmark training set significantly enhances model performance. It enables
+            traditional vision-language models (VLMs) to surpass the zero-shot VLLMs, which is the value of our dataset
+            in boosting VLM effectiveness.
+
+            <br><br>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+
+  
+
+  <section class="section" id="citation">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Citation</h2>
+      <pre><code>
+@inproceedings{chen-etal-2024-m3cot,
+  title = "M$^3$CoT: A Novel Benchmark for Multi-Domain Multi-step Multi-modal Chain-of-Thought",
+  author = "Chen, Qiguang  and
+    Qin, Libo  and
+    Zhang, Jin  and
+    Chen, Zhi  and
+    Xu, Xiao  and
+    Che, Wanxiang",
+  booktitle = "Proc. of ACL",
+  year = "2024",
+}
+  </code></pre>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Contact</h2>
+      <p>
+        Please create Github issues here or email <a href="mailto:charleschen2333@gmail.com"> Qiguang Chen </a> , or open up an issue on <a href="https://github.com/LightChen233/M3CoT/issues">Github</a>. if you have any questions or suggestions. 
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="Acknowledgement">
+    <div class="container is-max-desktop content">
+      <h2 class="title">Acknowledgement</h2>
+      <p>
+        This website is adapted from <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a> and <a
+          href="https://llava-rlhf.github.io/">LLaVA-RLHF</a>, licensed under a <a rel="license"
+          href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+          Commons Attribution-ShareAlike 4.0 International License</a>.
+        <!-- We thank the authors of the multi-modal instruction tuning datasets and open-source projects, including LLaVA, LLaVA-RLHF and Qwen-VL.  -->
+        <!-- We would thank <a href="https://runxinxu.github.io/aboutme/">Runxin Xu</a> for his great help on the project. -->
+      </p>
+
+      <p>
+        <b>Usage and License Notices</b>: The data, code and checkpoint is intended and licensed for research use only.
+        They are also restricted to uses that follow the license agreement of Qwen-VL and GPT-4. The dataset is CC BY NC
+        4.0 (allowing only non-commercial use) and models trained using the dataset should not be used outside of
+        research purposes.
+      </p>
+    </div>
+  </section>
+
+
+</body>
+<grammarly-desktop-integration data-grammarly-shadow-root="true"><template shadowrootmode="open">
+    <style>
+      div.grammarly-desktop-integration {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+
+      div.grammarly-desktop-integration:before {
+        content: attr(data-content);
+      }
+    </style>
+
+    <div aria-label="grammarly-integration" role="group" tabindex="-1" class="grammarly-desktop-integration"
+      data-content="{&quot;mode&quot;:&quot;full&quot;,&quot;isActive&quot;:true,&quot;isUserDisabled&quot;:false}">
+    </div>
+  </template></grammarly-desktop-integration>
+
+</html>

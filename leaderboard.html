@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard |  M<sup>3</sup>CoT</title>
+    <link rel="icon" href="img/unicorn.svg" type="image/icon type">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
+    
+    <script type="text/javascript" src="javascript/sort-table.js" defer></script>
+    <script type="text/javascript" src="javascript/leaderboard-data.js" defer></script>
+    <script type="text/javascript" src="javascript/leaderboard.js" defer></script>
+
+    <link rel="stylesheet" href="./LLaVA_files/css">
+    <link rel="stylesheet" href="./LLaVA_files/bulma.min.css">
+    <link rel="stylesheet" href="./LLaVA_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./LLaVA_files/index.css">
+</head>
+
+<body>
+    <div id="nav">
+        <div id="icon">
+            <img src="img/unicorn.svg" alt="SVG Image">
+            <a class="nav-button" href="https://m3cot.github.io/"
+                style="margin-left: 2px; font-size: 24px">M<sup>3</sup>CoT
+            </a>
+        </div>
+        
+        <div>
+            <a class="nav-button" href="index.html#home">Home</a>
+            <a class="nav-button" href="https://huggingface.co/datasets/LightChen2333/M3CoT">Download</a>
+            <a class="nav-button" href="index.html#evaluation">Evaluation</a>
+            <a class="nav-button" href="index.html#annotation">Annotation</a>
+            <a class="nav-button" href="index.html#paper">Paper</a>
+            <a class="nav-button" href="https://github.com/LightChen233/M3CoT">Code</a>
+            <a class="nav-button" href="index.html#citation">Citation</a>
+            <a class="nav-button" href="index.html#contact">Contact</a>
+            <a class="nav-button" href="leaderboard.html">Leaderboard</a>
+            <a class="nav-button" href="explore.html">Explore</a>
+            <a class="nav-button" href="visualize.html">Visualize</a>
+        </div>
+    </div>
+    <div id="body">
+        <br><br><br><br>
+        <div class="section" style="width: 150%; margin-left: -25%">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-six-fifths">
+                    <h1 class="title is-1"><img id="painting_icon" width="3%" src=""> Leaderboard - M<sup>3</sup>CoT
+                    </h1>
+                </div>
+            </div>
+            <p>
+                Evaluation of different methods on the <strong>test</strong> split (whole: 2,359).
+                The accuracies across various categories and the overall average are reported below.
+            </p>
+            <p>
+                &#128512 You are invited to contribute your results to the M<sup>3</sup>CoT test split!
+                Please send your result scores to <a href="mailto:charleschen2333@gmail.com" class="ext-link">this email</a>
+                or open a new issue at the <a href="https://github.com/LightChen233/M3CoT/issues"
+                    class="ext-link">github repository</a>.
+                <!-- Please fill in this <a href="https://forms.gle/mRv6CBe1MDh3m47ZA" class="ext-link">Google Form </a> to submit your results. -->
+            </p>
+
+            <p>
+                ⚠️⚠️⚠️ Caveat: The data in the leaderboard is collected manually from existing papers. There might be
+                some errors in the data, ambiguous data due to different interpretations, and missing data due to the
+                lack of information in the papers. Make sure to double-check the data before using it. Please contact us
+                at <a href="mailto:charleschen2333@gmail.com" class="ext-link">this email</a> if you find any errors or have
+                any suggestions. We appreciate your contributions and feedback.
+            </p>
+
+            <!-- https://www.cssscript.com/sort-table-header-column/ -->
+            <table class="js-sort-table" id="results">
+                <thead>
+                    <tr>
+                        <td class="js-sort-number"><strong>#</strong></td>
+                        <td class="js-sort"><strong>Model</strong></td>
+                        <td class="js-sort"><strong>Prompt</strong></td>
+                        <!-- <td class="js-sort"><strong>Method</strong></td> -->
+                        <!-- <td class="js-sort"><strong>Learning</strong></td> -->
+                        <td class="js-sort"><strong>#Setting</strong></td>
+                        <td class="js-sort"><strong>#Size</strong></td>
+                        <td class="js-sort"><strong>#Backbone</strong></td>
+                        <!-- <td class="js-sort"><strong>#P</strong></td> -->
+                        <td class="js-sort"><strong>Link</strong></td>
+                        <!-- <td class="js-sort"><strong>Date</strong></td> -->
+                        <td class="js-sort"><strong>Lang</strong></td>
+                        <td class="js-sort"><strong>Natural</strong></td>
+                        <td class="js-sort"><strong>Social</strong></td>
+                        <td class="js-sort"><strong>Physical</strong></td>
+                        <td class="js-sort"><strong>SocialCS</td>
+                        <td class="js-sort"><strong>Temporal</strong></td>
+                        <td class="js-sort"><strong>Algebra</strong></td>
+                        <td class="js-sort"><strong>Geometry</strong></td>
+                        <td class="js-sort"><strong>Theory</strong></td>
+                        <!-- <td class="js-sort"><strong>G1-6</strong></td> -->
+                        <!-- <td class="js-sort"><strong>G7-12</strong></td> -->
+                        <td class="js-sort"><strong><u>Total</u></strong></td>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+
+            </table>
+            
+            <p>
+                <strong>Prompting strategies:</strong>
+                <li><strong>Direct</strong>: approach to submitting samples in the VLLMs required format</li>
+                <li><strong>CoT</strong>: with ''Let's think step-by-step!''</li>
+                <li><strong>Desp-CoT</strong>: with an initial image description prompting</li>
+                <li><strong>CCoT</strong>: with better description in graph format</li>
+                </li>
+            </p>
+            <p>
+                <strong>Setting:</strong>
+                <li><strong>Zero-shot</strong>: The model is evaluated in a zero-shot setting on M<sup>3</sup>CoT</li>
+                <li><strong>Tool-Usage</strong>: The model is evaluated in a tool-augmented setting on M<sup>3</sup>CoT</li>
+                <li><strong>Fine-tuning</strong>: The model is fine-tuned on M<sup>3</sup>CoT</li>
+                <li><strong>-</strong>: Not available</li>
+                </li>
+            </p>
+            <p>
+                <strong>#Size: Total number of parameters in the model</strong>
+            </p>
+            <p>
+                <strong>Accuracies for different question sets:</strong>
+                <!-- <li><strong>NAT</strong>: questions of the natural science subject</li> -->
+                <li><strong>Lang</strong>: questions of the language science subject</li>
+                <li><strong>Natural</strong>: questions of the natural science subject</li>
+                <li><strong>Social</strong>: questions of the social science subject</li>
+                <li><strong>Physical</strong>: questions of the physical commonsense</li>
+                <li><strong>SocialCS</strong>: questions of the social commonsense</li>
+                <li><strong>Temporal</strong>: questions of the temporal commonsense</li>
+                <li><strong>Algebra</strong>: questions of the algebra mathematics</li>
+                <li><strong>Geometry</strong>: questions of the geometry mathematics</li>
+                <li><strong>Theory</strong>: questions of the theory mathematics</li>
+                <li><strong>Total</strong>: all questions (reporting the average accuracy)</li>
+                </li>
+            </p>
+        </div>
+    </div>
+</body>
+
+</html>

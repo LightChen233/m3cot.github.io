@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaderboard | M3CoT</title>
+    <link rel="icon" href="img/unicorn.svg" type="image/icon type">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/leaderboard.css">
+    <script type="text/javascript" src="javascript/sort-table.js" defer></script>
+    <script type="text/javascript" src="javascript/leaderboard-data.js" defer></script>
+    <script type="text/javascript" src="javascript/leaderboard.js" defer></script>
+    
+    
+    <link rel="stylesheet" href="./LLaVA_files/css">
+    <link rel="stylesheet" href="./LLaVA_files/bulma.min.css">
+    <link rel="stylesheet" href="./LLaVA_files/bootstrap.min.css">
+    <link rel="stylesheet" href="./LLaVA_files/index.css">
+</head>
+
+<body>
+    <div id="nav">
+        <div id="icon">
+            <img src="img/unicorn.svg" alt="SVG Image">
+            <a class="nav-button" href="https://m3cot.github.io/"
+                style="margin-left: 2px; font-size: 24px">M<sup>3</sup>CoT
+            </a>
+        </div>
+        <div>
+            <a class="nav-button" href="index.html#home">Home</a>
+            <a class="nav-button" href="index.html#dataset">Dataset</a>
+            <a class="nav-button" href="index.html#download">Download</a>
+            <a class="nav-button" href="index.html#method">Method</a>
+            <a class="nav-button" href="index.html#paper">Paper</a>
+            <a class="nav-button" href="index.html#code">Code</a>
+            <a class="nav-button" href="index.html#citation">Citation</a>
+            <a class="nav-button" href="index.html#authors">Authors</a>
+            <a class="nav-button" href="index.html#contact">Contact</a>
+            <a class="nav-button" href="leaderboard.html">Leaderboard</a>
+            <a class="nav-button" href="explore.html">Explore</a>
+            <a class="nav-button" href="visualize.html">Visualize</a>
+        </div>
+    </div>
+    <div id="body">
+        <br><br>
+        <section class="section">
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-six-fifths">
+                    <h2 class="title is-3"><img id="painting_icon" width="3%" src=""> Main Statistics
+                    </h2>
+                </div>
+            </div>
+            <div class="container is-max-desktop">
+
+                <div class="columns is-centered">
+                    <div class="column is-full-width">
+                        <div class="content has-text-justified">
+                            <centering>
+                                <div id="example-box">
+                                    <img class="example-img" src="img/Figure6.png" style="width: 100%;"
+                                        alt="main_statistics.png">
+                                </div>
+                            </centering>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br>
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-six-fifths">
+                    <h2 class="title is-3"><img id="painting_icon" width="3%" src=""> Comparison with Other Datasets
+                    </h2>
+                </div>
+            </div>
+            <div class="container is-max-desktop">
+
+                <div class="columns is-centered">
+                    <div class="column is-full-width">
+                        <div class="content has-text-justified">
+                            <centering>
+                                <p>
+                                Comparison of the distribution of steps in the rationale for existing benchmarks. Notably, the
+                                distributions for MMMU and VCR overlap.
+                                </p>
+                            </centering>
+                            <centering>
+                                <div style="text-align: center;">
+                                    <img class="example-img" src="img/Rationale_steps.png" style="width: 60%;"
+                                        alt="main_statistics.png">
+                                </div>
+                            </centering>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-six-fifths">
+                    <h2 class="title is-3"><img id="painting_icon" width="3%" src=""> Image diversity
+                    </h2>
+                </div>
+            </div>
+            <div class="container is-max-desktop">
+
+                <div class="columns is-centered">
+                    <div class="column is-full-width">
+                        <div class="content has-text-justified">
+                            <centering>
+                                <p>
+                                    Image diversity analysis (a) and the representation comparison (b) between M<sup>3</sup>CoT and
+                                    ScienceQA, where the point area in Figure (b) represents the image semantics coverage in the semantic
+                                    space.
+                                </p>
+                            </centering>
+                            <centering>
+                                <div style="text-align: center;">
+                                    <img class="example-img" src="img/Image_diversity.png" style="width: 60%;"
+                                        alt="main_statistics.png">
+                                </div>
+                            </centering>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-six-fifths">
+                    <h2 class="title is-3"><img id="painting_icon" width="3%" src=""> Representation Distributions
+                    </h2>
+                </div>
+            </div>
+            <div class="container is-max-desktop">
+
+                <div class="columns is-centered">
+                    <div class="column is-full-width">
+                        <div class="content has-text-justified">
+                            <centering>
+                                <p>
+                                    Representation of rationale in two datasets via RoBERTa encoding and tSNE dimensionality reduction.
+                                </p>
+                            </centering>
+                            <centering>
+                                <div style="text-align: center;">
+                                    <img class="example-img" src="img/Representation_Distributions.png" style="width: 40%;"
+                                        alt="main_statistics.png">
+                                </div>
+                            </centering>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br><br><br><br>
+            <div class="columns is-centered has-text-centered">
+                <div class="column is-six-fifths">
+                    <h2 class="title is-3"><img id="painting_icon" width="3%" src="">Rationale Quality Importance
+                    </h2>
+                </div>
+            </div>
+            <div class="container is-max-desktop">
+
+                <div class="columns is-centered">
+                    <div class="column is-full-width">
+                        <div class="content has-text-justified">
+                            <centering>
+                                <p>
+                                    Analysis of the correlation between multidimensional qualities for model-generated rationale and final
+                accuracy performance. The rationale qualities are computed by ROSCOE.
+                                </p>
+                            </centering>
+                            <centering>
+                                <div style="text-align: center;">
+                                    <img class="example-img" src="img/Rationale_Quality.png" style="width: 70%;"
+                                        alt="main_statistics.png">
+                                </div>
+                            </centering>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+
+    <div id="footer">
+        © Research Center for Social Computing and Information Retrieval at HIT 2024
+    </div>
+</body>
+
+</html>
