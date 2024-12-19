@@ -14,11 +14,35 @@
     <script type="text/javascript" src="javascript/sort-table.js" defer></script>
     <script type="text/javascript" src="javascript/leaderboard-data.js" defer></script>
     <script type="text/javascript" src="javascript/leaderboard.js" defer></script>
+    <script>
+        function displaySetting(set_name){
+            var temp_leaderboard = []
+            for (let i of leaderboard) {
+                if (i.Setting == set_name || set_name == "all"){
+                    temp_leaderboard.push(i)
+                }
+            }
+            let table = document.getElementById("results");
+            html = "";
+            for (let i of temp_leaderboard) {
+                html += obj_to_tr(i);
+            }
 
+            table.getElementsByTagName("tbody")[0].innerHTML = html;
+
+            function reflow(elt) {
+                console.log(elt.offsetHeight);
+            }
+        }
+    </script>
     <link rel="stylesheet" href="./LLaVA_files/css">
     <link rel="stylesheet" href="./LLaVA_files/bulma.min.css">
     <link rel="stylesheet" href="./LLaVA_files/bootstrap.min.css">
     <link rel="stylesheet" href="./LLaVA_files/index.css">
+    <link rel="stylesheet" href="https://cdn.staticfile.net/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdn.staticfile.net/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.net/popper.js/1.15.0/umd/popper.min.js"></script>
+    <script src="https://cdn.staticfile.net/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 
 <body>
@@ -53,6 +77,20 @@
                     </h1>
                 </div>
             </div>
+            <div class="column has-text-centered" style="margin: auto;">
+                <div class="dropdown">
+                <button type="button" class="btn btn-primary dropdown-toggle" style="background-color: black;color: white;border-color: black; border-radius: 20px;margin-bottom: 30px;" data-toggle="dropdown">
+                    Setting Selection
+                </button>
+                <div class="dropdown-menu" style="border-color: black; left: 5px;">
+                    <a class="dropdown-item" href="javascript:displaySetting('all')">All</a>
+                    <a class="dropdown-item" href="javascript:displaySetting('zero-shot')">Zero-shot</a>
+                    <a class="dropdown-item" href="javascript:displaySetting('tool-usage')">Tool-Usage</a>
+                    <a class="dropdown-item" href="javascript:displaySetting('fine-tuning')">Fine-Tuning</a>
+                    <a class="dropdown-item" href="javascript:displaySetting('preference-optimization')">Preference-Optimization</a>
+                </div>
+                </div>
+            </div>
             <p>
                 Evaluation of different methods on the <strong>test</strong> split (whole: 2,359).
                 The accuracies across various categories and the overall average are reported below.
@@ -62,7 +100,7 @@
                 Please send your result scores to <a href="mailto:charleschen2333@gmail.com" class="ext-link">this email</a>
                 or open a new issue at the <a href="https://github.com/LightChen233/M3CoT/issues"
                     class="ext-link">github repository</a>.
-                <!-- Please fill in this <a href="https://forms.gle/mRv6CBe1MDh3m47ZA" class="ext-link">Google Form </a> to submit your results. -->
+                
             </p>
 
             <p>
